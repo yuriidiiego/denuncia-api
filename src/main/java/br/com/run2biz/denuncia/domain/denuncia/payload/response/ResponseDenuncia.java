@@ -4,7 +4,10 @@ import br.com.run2biz.denuncia.domain.denuncia.Denunciante;
 import br.com.run2biz.denuncia.domain.endereco.Endereco;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-@Schema(name = "ResponseDenuncia")
+@Schema(
+  name = "ResponseDenuncia",
+  description = "Dados de resposta da denúncia"
+)
 public class ResponseDenuncia {
 
   @Schema(description = "Identificador da denúncia", example = "1")
@@ -22,10 +25,16 @@ public class ResponseDenuncia {
   )
   private String titulo;
 
+  @Schema(
+    description = "Descrição da denúncia",
+    example = "Buraco na esquina da Avenida Paulista com Rua Augusta"
+  )
   private String descricao;
 
+  @Schema(description = "Denunciante que realizou a denúncia")
   private Denunciante denunciante;
 
+  @Schema(description = "Endereço da denúncia")
   private Endereco endereco;
 
   public Long getId() {
