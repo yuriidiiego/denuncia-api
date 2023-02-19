@@ -1,12 +1,11 @@
 package br.com.run2biz.denuncia.domain.denuncia;
 
-import javax.transaction.Transactional;
-import org.springframework.stereotype.Service;
-
 import br.com.run2biz.denuncia.domain.denuncia.payload.request.CreateDenuncia;
 import br.com.run2biz.denuncia.domain.denuncia.payload.response.ResponseDenuncia;
 import br.com.run2biz.denuncia.domain.endereco.Endereco;
 import br.com.run2biz.denuncia.domain.endereco.IEnderecoService;
+import javax.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class DenunciaServiceImpl implements IDenunciaService {
@@ -26,14 +25,13 @@ public class DenunciaServiceImpl implements IDenunciaService {
   }
 
   @Transactional
-  public ResponseDenuncia criarDenuncia(CreateDenuncia request) {
-    Denuncia denuncia = denunciaMapper.toDenuncia(request);
+  public ResponseDenuncia criarDenuncia(CreateDenuncia createDenunciaRequest) {
+    Denuncia denuncia = denunciaMapper.toDenuncia(createDenunciaRequest);
     Endereco endereco = service.recuperarEndereco(
-      request.getLatitude(),
-      request.getLongitude()
+      createDenunciaRequest.getLatitude(),
+      createDenunciaRequest.getLongitude()
     );
     denuncia.setEndereco(endereco);
-
     Denuncia savedDenuncia = denunciaRepository.save(denuncia);
 
     return denunciaMapper.toResponseDenuncia(savedDenuncia);
