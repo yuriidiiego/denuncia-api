@@ -1,5 +1,6 @@
 package br.com.run2biz.denuncia.domain.denuncia;
 
+import br.com.run2biz.denuncia.domain.endereco.Endereco;
 import io.swagger.v3.oas.annotations.media.Schema;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,30 +13,32 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import br.com.run2biz.denuncia.domain.endereco.Endereco;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "denuncia")
-@Schema(name = "Denúncia", description = "Informações sobre uma denúncia")
+@Schema(name = "Denúncia", description = "Entidade que representa uma denúncia")
 public class Denuncia {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Schema(description = "ID da denúncia", example = "1")
+  @Column(name = "id", updatable = false, nullable = false)
+  @Schema(description = "Identificador da denúncia", example = "1")
   private Long id;
 
+  @NotNull
   @Column(name = "latitude")
-  @Schema(description = "Latitude da denúncia", example = "-23.5489")
+  @Schema(description = "Latitude da denúncia", example = "51.509865")
   private Double latitude;
 
+  @NotNull
   @Column(name = "longitude")
-  @Schema(description = "Longitude da denúncia", example = "-46.6388")
+  @Schema(description = "Longitude da denúncia", example = "-0.118092")
   private Double longitude;
 
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "denunciante_id")
-  @Schema(description = "Informações do denunciante")
+  @Schema(description = "Denunciante que realizou a denúncia")
   private Denunciante denunciante;
 
   @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -43,10 +46,20 @@ public class Denuncia {
   @Schema(description = "Endereço da denúncia")
   private Endereco endereco;
 
-  @Column(nullable = false)
+  @NotNull
+  @Column(name = "titulo")
+  @Schema(
+    description = "Título da denúncia",
+    example = "Denúncia de buraco na rua"
+  )
   private String titulo;
 
-  @Column(nullable = false)
+  @NotNull
+  @Column(name = "descricao")
+  @Schema(
+    description = "Descrição da denúncia",
+    example = "Buraco na esquina da Avenida Paulista com Rua Augusta"
+  )
   private String descricao;
 
   public Long getId() {
