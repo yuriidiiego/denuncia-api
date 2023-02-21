@@ -1,8 +1,8 @@
 package br.com.run2biz.denuncia.domain.denuncia;
 
 import br.com.run2biz.denuncia.domain.denuncia.payload.request.CreateDenunciaRequest;
-import br.com.run2biz.denuncia.domain.denuncia.payload.response.ResponseDenuncia;
+import br.com.run2biz.denuncia.domain.denuncia.payload.response.DenunciaResponse;
 
 public interface IDenunciaService {
-  ResponseDenuncia criarDenuncia(CreateDenunciaRequest createDenunciaRequest);
+  DenunciaResponse criarDenuncia(CreateDenunciaRequest createDenunciaRequest);
 }
