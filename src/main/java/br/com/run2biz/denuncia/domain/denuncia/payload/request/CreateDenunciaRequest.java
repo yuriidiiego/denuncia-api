@@ -11,18 +11,6 @@ import javax.validation.constraints.NotNull;
 )
 public class CreateDenunciaRequest {
 
-  @NotNull(message = "latitude não pode ser nulo")
-  @Schema(description = "Latitude da denúncia", example = "51.509865")
-  private Double latitude;
-
-  @NotNull(message = "longitude não pode ser nulo")
-  @Schema(description = "Longitude da denúncia", example = "-0.118092")
-  private Double longitude;
-
-  @NotNull
-  @Schema(description = "Denunciante que realizou a denúncia")
-  private Denunciante denunciante;
-
   @NotBlank
   @Schema(
     description = "Título da denúncia",
@@ -36,6 +24,18 @@ public class CreateDenunciaRequest {
     example = "Buraco na esquina da Avenida Paulista com Rua Augusta"
   )
   private String descricao;
+
+  @NotNull(message = "latitude não pode ser nulo")
+  @Schema(description = "Latitude da denúncia", example = "51.509865")
+  private Double latitude;
+
+  @NotNull(message = "longitude não pode ser nulo")
+  @Schema(description = "Longitude da denúncia", example = "-0.118092")
+  private Double longitude;
+
+  @NotNull
+  @Schema(description = "Denunciante que realizou a denúncia")
+  private Denunciante denunciante;
 
   public Double getLatitude() {
     return latitude;
