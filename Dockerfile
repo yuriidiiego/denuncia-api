@@ -5,8 +5,8 @@ USER spring:spring
 
 ARG JAR_FILE=target/denuncia-0.0.1-SNAPSHOT.jar
 
-COPY ${JAR_FILE} app.jar
+COPY ${JAR_FILE} denuncia-api.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "denuncia-api.jar"]
