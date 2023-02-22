@@ -2,7 +2,7 @@ package br.com.run2biz.denuncia.adapters;
 
 import br.com.run2biz.denuncia.domain.denuncia.IDenunciaService;
 import br.com.run2biz.denuncia.domain.denuncia.payload.request.CreateDenunciaRequest;
-import br.com.run2biz.denuncia.domain.denuncia.payload.response.ResponseDenuncia;
+import br.com.run2biz.denuncia.domain.denuncia.payload.response.DenunciaResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -46,10 +46,10 @@ public class DenunciaController {
       ),
     }
   )
-  public ResponseEntity<ResponseDenuncia> createDenuncia(
+  public ResponseEntity<DenunciaResponse> createDenuncia(
     @Valid @RequestBody CreateDenunciaRequest createDenunciaRequest
   ) {
-    ResponseDenuncia responseDenuncia = denunciaService.criarDenuncia(
+    DenunciaResponse responseDenuncia = denunciaService.criarDenuncia(
       createDenunciaRequest
     );
 
