@@ -1,7 +1,7 @@
 package br.com.run2biz.denuncia.domain.denuncia;
 
 import br.com.run2biz.denuncia.domain.denuncia.payload.request.CreateDenunciaRequest;
-import br.com.run2biz.denuncia.domain.denuncia.payload.response.ResponseDenuncia;
+import br.com.run2biz.denuncia.domain.denuncia.payload.response.DenunciaResponse;
 import br.com.run2biz.denuncia.domain.endereco.Endereco;
 import br.com.run2biz.denuncia.domain.endereco.IEnderecoService;
 import javax.transaction.Transactional;
@@ -25,7 +25,7 @@ public class DenunciaServiceImpl implements IDenunciaService {
   }
 
   @Transactional
-  public ResponseDenuncia criarDenuncia(
+  public DenunciaResponse criarDenuncia(
     CreateDenunciaRequest createDenunciaRequest
   ) {
     Denuncia denuncia = denunciaMapper.toDenuncia(createDenunciaRequest);
