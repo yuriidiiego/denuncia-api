@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Schema(description = "Representa a entidade Denunciante")
 public class Denunciante {
 
+  @Schema(description = "Identificador da denúncia", example = "1")
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
