@@ -36,13 +36,21 @@ public class Denuncia {
   @Schema(description = "Longitude da denúncia", example = "-0.118092")
   private Double longitude;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "denunciante_id")
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) //
+  @JoinColumn(
+    name = "denunciante_id",
+    referencedColumnName = "id",
+    nullable = false
+  )
   @Schema(description = "Denunciante que realizou a denúncia")
   private Denunciante denunciante;
 
   @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  @JoinColumn(name = "endereco_cep", referencedColumnName = "cep")
+  @JoinColumn(
+    name = "endereco_cep",
+    referencedColumnName = "cep",
+    nullable = false
+  )
   @Schema(description = "Endereço da denúncia")
   private Endereco endereco;
 
