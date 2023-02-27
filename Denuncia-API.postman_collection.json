@@ -1,0 +1,34 @@
+{
+  "info": {
+    "_postman_id": "09bde1c1-f0cc-4b1e-8942-be8a97cd52d4",
+    "name": "Denuncia-API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "17690371"
+  },
+  "item": [
+    {
+      "name": "Cria uma denuncia.",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"latitude\": -1.348665,\n    \"longitude\": -48.391616,\n    \"titulo\": \"Lixos nas ruas\",\n    \"descricao\": \"Existe um lixo gigantesco a céu aberto nesta localidade.\",\n    \"denunciante\": {\n        \"nome\": \"Alan De Deus\",\n        \"cpf\": \"70989098230\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/denuncias",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "denuncias"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
