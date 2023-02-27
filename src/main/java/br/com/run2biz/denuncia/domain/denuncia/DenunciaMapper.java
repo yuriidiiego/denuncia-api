@@ -1,16 +1,15 @@
 package br.com.run2biz.denuncia.domain.denuncia;
 
+import br.com.run2biz.denuncia.domain.denuncia.payload.request.DenunciaRequest;
+import br.com.run2biz.denuncia.domain.denuncia.payload.response.DenunciaResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-
-import br.com.run2biz.denuncia.domain.denuncia.payload.request.CreateDenunciaRequest;
-import br.com.run2biz.denuncia.domain.denuncia.payload.response.DenunciaResponse;
 
 @Mapper(componentModel = "spring")
 public interface DenunciaMapper {
   @Mapping(target = "id", ignore = true)
   @Mapping(target = "endereco", ignore = true)
-  Denuncia toDenuncia(CreateDenunciaRequest createDenunciaRequest);
+  Denuncia toDenuncia(DenunciaRequest createDenunciaRequest);
 
   DenunciaResponse toResponseDenuncia(Denuncia denuncia);
 }

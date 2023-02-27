@@ -3,7 +3,7 @@ package br.com.run2biz.denuncia.domain.endereco;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import br.com.run2biz.denuncia.external.mapquestclient.Location;
+import br.com.run2biz.denuncia.external.mapquestclient.LocationResult;
 
 @Mapper(componentModel = "spring")
 public interface EnderecoMapper {
@@ -13,5 +13,5 @@ public interface EnderecoMapper {
   @Mapping(target = "cidade", source = "adminArea5")
   @Mapping(target = "estado", source = "adminArea3")
   @Mapping(target = "pais", source = "adminArea1")
-  Endereco toEndereco(Location location);
+  Endereco toEndereco(LocationResult location);
 }

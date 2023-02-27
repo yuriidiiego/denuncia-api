@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Result {
 
-  private List<Location> locations;
+  private List<LocationResult> locations;
 
-  public List<Location> getLocations() {
+  public List<LocationResult> getLocations() {
     return locations;
   }
 
-  public void setLocations(List<Location> locations) {
+  public void setLocations(List<LocationResult> locations) {
     this.locations = locations;
   }
 }

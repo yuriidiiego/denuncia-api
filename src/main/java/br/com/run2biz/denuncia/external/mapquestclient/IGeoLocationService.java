@@ -2,7 +2,7 @@ package br.com.run2biz.denuncia.external.mapquestclient;
 
 import org.springframework.cache.annotation.Cacheable;
 
-public interface IMapQuestService {
+public interface IGeoLocationService {
   @Cacheable("reverseGeocode")
-  GeoCodeResult reverseGeocode(Double latitude, Double longitude);
+  GeoLocationResult reverseGeocode(Double latitude, Double longitude);
 }

@@ -1,24 +1,26 @@
 package br.com.run2biz.denuncia.domain.denuncia.payload.request;
 
-import br.com.run2biz.denuncia.domain.denuncia.Denunciante;
 import io.swagger.v3.oas.annotations.media.Schema;
+import javax.validation.Valid;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Schema(
-  name = "CreateDenunciaRequest",
+  name = "DenunciaRequest",
   description = "Dados para criação de uma denúncia"
 )
-public class CreateDenunciaRequest {
+public class DenunciaRequest {
 
-  @NotBlank
+  @NotBlank(message = "O título da denúncia é obrigatório")
   @Schema(
     description = "Título da denúncia",
     example = "Denúncia de buraco na rua"
   )
   private String titulo;
 
-  @NotBlank
+  @NotBlank(message = "A descrição da denúncia é obrigatória")
   @Schema(
     description = "Descrição da denúncia",
     example = "Buraco na esquina da Avenida Paulista com Rua Augusta"
@@ -26,16 +28,36 @@ public class CreateDenunciaRequest {
   private String descricao;
 
   @NotNull(message = "latitude não pode ser nulo")
+  @DecimalMin(
+    value = "-90.0",
+    inclusive = true,
+    message = "Latitude deve ser maior ou igual a -90.0"
+  )
+  @DecimalMax(
+    value = "90.0",
+    inclusive = true,
+    message = "Latitude deve ser menor ou igual a 90.0"
+  )
   @Schema(description = "Latitude da denúncia", example = "51.509865")
   private Double latitude;
 
   @NotNull(message = "longitude não pode ser nulo")
+  @DecimalMin(
+    value = "-180.0",
+    inclusive = true,
+    message = "Longitude deve ser maior ou igual a -180.0"
+  )
+  @DecimalMax(
+    value = "180.0",
+    inclusive = true,
+    message = "Longitude deve ser menor ou igual a 180.0"
+  )
   @Schema(description = "Longitude da denúncia", example = "-0.118092")
   private Double longitude;
 
-  @NotNull
+  @Valid
   @Schema(description = "Denunciante que realizou a denúncia")
-  private Denunciante denunciante;
+  private DenuncianteRequest denunciante;
 
   public Double getLatitude() {
     return latitude;
@@ -53,11 +75,11 @@ public class CreateDenunciaRequest {
     this.longitude = longitude;
   }
 
-  public Denunciante getDenunciante() {
+  public DenuncianteRequest getDenunciante() {
     return denunciante;
   }
 
-  public void setDenunciante(Denunciante denunciante) {
+  public void setDenunciante(DenuncianteRequest denunciante) {
     this.denunciante = denunciante;
   }
 

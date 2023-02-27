@@ -50,9 +50,19 @@ public class ErrorValidationHandler extends ResponseEntityExceptionHandler {
     DataIntegrityViolationException ex,
     WebRequest request
   ) {
-    int statusCode = HttpStatus.BAD_REQUEST.value();
     String message = ex.getMostSpecificCause().getMessage();
-    ErrorResponse error = new ErrorResponse(statusCode, message);
-    return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    if (message.contains("PUBLIC.UK_6ONVI3H2TS412UFROA6Y28LGH_INDEX_9")) {
+      ErrorResponse error = new ErrorResponse(
+        HttpStatus.CONFLICT.value(),
+        "Já existe algum registro de denúncia para o endereço em questão."
+      );
+      return new ResponseEntity<>(error, HttpStatus.CONFLICT);
+    } else {
+      ErrorResponse error = new ErrorResponse(
+        HttpStatus.BAD_REQUEST.value(),
+        message
+      );
+      return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
   }
 }

@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -25,34 +26,6 @@ public class Denuncia {
   @Column(name = "id", updatable = false, nullable = false)
   @Schema(description = "Identificador da denúncia", example = "1")
   private Long id;
-
-  @NotNull
-  @Column(name = "latitude")
-  @Schema(description = "Latitude da denúncia", example = "51.509865")
-  private Double latitude;
-
-  @NotNull
-  @Column(name = "longitude")
-  @Schema(description = "Longitude da denúncia", example = "-0.118092")
-  private Double longitude;
-
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) //
-  @JoinColumn(
-    name = "denunciante_id",
-    referencedColumnName = "id",
-    nullable = false
-  )
-  @Schema(description = "Denunciante que realizou a denúncia")
-  private Denunciante denunciante;
-
-  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  @JoinColumn(
-    name = "endereco_cep",
-    referencedColumnName = "cep",
-    nullable = false
-  )
-  @Schema(description = "Endereço da denúncia")
-  private Endereco endereco;
 
   @NotNull
   @Column(name = "titulo")
@@ -69,6 +42,36 @@ public class Denuncia {
     example = "Buraco na esquina da Avenida Paulista com Rua Augusta"
   )
   private String descricao;
+
+  @NotNull
+  @Column(name = "latitude")
+  @Schema(description = "Latitude da denúncia", example = "51.509865")
+  private Double latitude;
+
+  @NotNull
+  @Column(name = "longitude")
+  @Schema(description = "Longitude da denúncia", example = "-0.118092")
+  private Double longitude;
+
+  @Valid
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "denunciante_id",
+    referencedColumnName = "id",
+    nullable = false
+  )
+  @Schema(description = "Denunciante que realizou a denúncia")
+  private Denunciante denunciante;
+
+  @Valid
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(
+    name = "endereco_cep",
+    referencedColumnName = "cep",
+    nullable = false
+  )
+  @Schema(description = "Endereço da denúncia")
+  private Endereco endereco;
 
   public Long getId() {
     return id;

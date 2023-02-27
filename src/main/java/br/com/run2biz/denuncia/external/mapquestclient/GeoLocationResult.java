@@ -2,7 +2,7 @@ package br.com.run2biz.denuncia.external.mapquestclient;
 
 import java.util.List;
 
-public class GeoCodeResult {
+public class GeoLocationResult {
 
   private List<Result> results;
 

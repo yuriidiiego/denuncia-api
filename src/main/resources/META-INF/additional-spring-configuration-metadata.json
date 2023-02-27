@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "geocoding.mapquest.url",
+  "type": "java.lang.String",
+  "description": "API URL for the MapQuest geocoding service"
+}]}

@@ -1,6 +1,6 @@
 package br.com.run2biz.denuncia.external.mapquestclient;
 
-public class Location {
+public class LocationResult {
 
   private String street;
   private String postalCode;

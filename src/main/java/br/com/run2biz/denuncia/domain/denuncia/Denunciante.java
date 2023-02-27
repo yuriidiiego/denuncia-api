@@ -7,23 +7,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "denunciante")
-@Schema(description = "Representa a entidade Denunciante")
+@Schema(
+  name = "Denunciante",
+  description = "Enttidade que representa um denunciante"
+)
 public class Denunciante {
 
-  @Schema(description = "Identificador da denúncia", example = "1")
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Schema(description = "Identificador do denunciante", example = "1")
   private Long id;
 
+  @NotNull
   @Column(name = "nome")
-  @Schema(description = "Nome do denunciante", example = "João da Silva")
+  @Schema(
+    description = "Nome do denunciante",
+    example = "José da Silva"
+  )
   private String nome;
 
+  @NotNull
   @Column(name = "cpf")
-  @Schema(description = "CPF do denunciante", example = "70989098230")
+  @Schema(
+    description = "CPF do denunciante",
+    example = "123.456.789-10"
+  )
   private String cpf;
 
   public String getCpf() {

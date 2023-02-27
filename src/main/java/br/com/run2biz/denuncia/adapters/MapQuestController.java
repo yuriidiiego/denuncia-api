@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.run2biz.denuncia.external.mapquestclient.GeoCodeResult;
-import br.com.run2biz.denuncia.external.mapquestclient.IMapQuestService;
+import br.com.run2biz.denuncia.external.mapquestclient.GeoLocationResult;
+import br.com.run2biz.denuncia.external.mapquestclient.IGeoLocationService;
 
 @Tag(name = "Geocoding API", description = "Reverse geocoding API")
 @RestController
 public class MapQuestController {
 
-  private IMapQuestService mapQuestService;
+  private IGeoLocationService mapQuestService;
 
-  public MapQuestController(IMapQuestService mapQuestService) {
+  public MapQuestController(IGeoLocationService mapQuestService) {
     this.mapQuestService = mapQuestService;
   }
 
@@ -38,14 +38,14 @@ public class MapQuestController {
         description = "success",
         content = @Content(
           mediaType = "application/json",
-          schema = @Schema(implementation = GeoCodeResult.class)
+          schema = @Schema(implementation = GeoLocationResult.class)
         )
       ),
       @ApiResponse(responseCode = "404", description = "geocode not found"),
     }
   )
   @GetMapping("/geocode")
-  public ResponseEntity<GeoCodeResult> geocode(
+  public ResponseEntity<GeoLocationResult> geocode(
     @Parameter(
       description = "Latitude to reverse geocode",
       required = true,
@@ -57,7 +57,7 @@ public class MapQuestController {
       example = "-122.332099"
     ) @RequestParam("lng") Double longitude
   ) {
-    GeoCodeResult geocodeResult = mapQuestService.reverseGeocode(
+    GeoLocationResult geocodeResult = mapQuestService.reverseGeocode(
       latitude,
       longitude
     );

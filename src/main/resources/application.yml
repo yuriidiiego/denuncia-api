@@ -1,0 +1,33 @@
+spring:
+  # main:
+  #   banner-mode: off
+  # output:
+  #   ansi:
+  #     enabled: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+springdoc:
+  api-docs:
+    path: /denuncia/api-docs
+  swagger-ui:
+    path: /denuncia/swagger-ui.html
+    enabled: true
+
+# logging:
+#   level:
+#     root: info
+#     "[br.com.run2biz.denuncia]": debug
+#     '[org.springframework.web]': error
+#   file:
+#     name: logs/denuncia-application.log
+#     max-size: 50MB
+#     max-history: 7
+#   pattern:
+#     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n"
+#     file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n"
+
+geocoding:
+  mapquest:
+    url: https://www.mapquestapi.com/geocoding/v1/reverse?key=AGqDEHXahY63sXh1m0Lahcq26ppiAqtF&location=
